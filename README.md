@@ -1,2 +1,3 @@
-# prog2_projekt
-Projekt pri predmetu Programiranje 2
+# Project (Programiranje 2)
+
+Project work for the course 'Programiranje 2'.
