@@ -44,6 +44,10 @@ public class Igra {
         return moznePoteze;
     }
 
+    public boolean konecIgre() {
+        return getMoznePoteze().isEmpty();
+    }
+
     public boolean odigraj(Poteza poteza) {
         if (jeVeljavna(poteza)) {
             polje[poteza.x()][poteza.y()] = naPotezi.getPolje();
@@ -65,8 +69,49 @@ public class Igra {
         return polje[vrstica][stolpec] == Polje.PRAZNO;
     }
 
+    public boolean preveriZmago() {
+        // Potrembno implementirati
+        return true;
+    }
+
     public Igralec naPotezi() {
         return naPotezi;
+    }
+
+    private Igralec zmagovalec() {
+        for (int i = 1; i < polje.length - 1; i++) {
+            for (int j = 1; j < polje[0].length - 1; j++) {
+                if (jeObkrozen(i, j)) {
+                    return polje[i][j] == Polje.BEL ? Igralec.CRN : Igralec.BEL;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private boolean jeObkrozen(int i, int j) {
+        Polje nasprotnik = polje[i][j] == Polje.BEL ? Polje.CRN : Polje.BEL;
+
+        if (polje[i - 1][j] == nasprotnik && polje[i + 1][j] == nasprotnik && 
+                polje[i][j - 1] == nasprotnik && polje[i][j + 1] == nasprotnik) {
+                    return true;
+                }
+
+                return false;
+    }
+
+    public Stanje stanje() {
+        // Ali imamo zmagovalca?
+        Igralec zmagovalec = zmagovalec();
+        if (zmagovalec != null) {
+            return switch (zmagovalec) {
+                case BEL -> Stanje.ZMAGA_BEL;
+                case CRN -> Stanje.ZMAGA_CRN;
+            };
+        }
+
+        return Stanje.V_TEKU;
     }
 
 }
