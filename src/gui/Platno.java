@@ -121,14 +121,9 @@ public class Platno extends JPanel implements MouseListener {
             int w = (int) (squareWidth());
             double pi = (double) x / (double) w;
             int i = pi - Math.floor(pi) < 0.5 ? (int) Math.floor(pi) : (int) Math.floor(pi) + 1;
-            double di = (x % w) / squareWidth();
             double pj = (double) y / (double) w;
             int j = pj - Math.floor(pj) < 0.5 ? (int) Math.floor(pj) : (int) Math.floor(pj) + 1;
-            double dj = (y % w) / squareWidth();
-            if (0 <= i && i < Igra.velikost &&
-                    0.5 * LINE_WIDTH < di && di < 1.0 - 0.5 * LINE_WIDTH &&
-                    0 <= j && j < Igra.velikost &&
-                    0.5 * LINE_WIDTH < dj && dj < 1.0 - 0.5 * LINE_WIDTH) {
+            if (0 <= i && i < Igra.velikost) {
                 Vodja.igrajClovekovoPotezo(new Poteza(i - 1, j - 1));
             }
         }
