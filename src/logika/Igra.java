@@ -6,8 +6,14 @@ import java.util.List;
 import splosno.Poteza;
 
 public class Igra {
-    private Polje[][] polje;
+    
+    // Velikost igralne plošče je 9 x 9.
     public static final int velikost = 9;
+
+    // Igralno polje
+    private Polje[][] polje;
+
+    // Igralec, ki je trenutno na potezi.
     private Igralec naPotezi;
     
     public Igra() {
@@ -27,6 +33,10 @@ public class Igra {
 
     public Polje[][] getPolje() {
         return polje;
+    }
+
+    public boolean staPovezana(int[] polje1, int[] polje2) {
+        return Math.abs(polje1[0] - polje2[0]) + Math.abs(polje1[1] - polje2[1]) == 1;
     }
 
     // Seznam možnih potez (prosta polja).
