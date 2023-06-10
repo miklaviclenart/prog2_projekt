@@ -104,11 +104,21 @@ public class Okno extends JFrame implements ActionListener{
             Vodja.igramoNovoIgro();
         } else if (e.getSource() == igraClovekRacunalnik) {
             Vodja.vrstaIgralca = new EnumMap<Igralec, VrstaIgralca>(Igralec.class);
+            Vodja.vrstaIgralca.put(Igralec.CRN, VrstaIgralca.C);
+            Vodja.vrstaIgralca.put(Igralec.BEL, VrstaIgralca.R);
+            Vodja.igramoNovoIgro();
+        } else if (e.getSource() == igraRacunalnikClovek) {
+			Vodja.vrstaIgralca = new EnumMap<Igralec, VrstaIgralca>(Igralec.class);
             Vodja.vrstaIgralca.put(Igralec.BEL, VrstaIgralca.C);
             Vodja.vrstaIgralca.put(Igralec.CRN, VrstaIgralca.R);
             Vodja.igramoNovoIgro();
-        }
-    }
+		} else if (e.getSource() == igraRacunalnikRacunalnik) {
+			Vodja.vrstaIgralca = new EnumMap<Igralec, VrstaIgralca>(Igralec.class);
+            Vodja.vrstaIgralca.put(Igralec.BEL, VrstaIgralca.R);
+            Vodja.vrstaIgralca.put(Igralec.CRN, VrstaIgralca.R);
+            Vodja.igramoNovoIgro();
+		}
+	}
 
 	public void osveziGUI() {
 		if (Vodja.igra == null) {
